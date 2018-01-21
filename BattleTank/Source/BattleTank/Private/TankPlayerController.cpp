@@ -3,6 +3,7 @@
 
 #include "TankPlayerController.h"
 #include "BattleTank.h"
+#include "Tank.h"
 
 void ATankPlayerController::Tick(float DeltaTime)
 {
@@ -39,8 +40,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector HitLocation;  //OUT parameter
 	if (GetSightRayHitLocation(HitLocation)) // is going to line trace
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Hit location: %s"), *HitLocation.ToString());
-		// Tell controlled tank to aim at this point
+		GetControlledTank()->AimAt(HitLocation);
 	}
 }
 
